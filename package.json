@@ -1,0 +1,17 @@
+{
+  "name": "whatsapparchive",
+  "version": "1.0.0",
+  "description": "A simple web app wich will archive your whatsapp history",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Soham Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.12",
+    "read-text-file": "^1.1.0"
+  }
+}
