@@ -1,0 +1,21 @@
+.whatsappImg{
+    height : 150px;
+    width : 150px;
+    margin : auto;
+    margin-top : 30px;
+}
+.sidebar{
+    margin : 0;
+    padding: 0;
+}
+
+.chatArea{
+    background-image: url("/images/background.jpg");
+    height: 515px; 
+    width: 100%; 
+    border: solid 2px #262626;
+}
+
+*{
+    outline : none;
+}
