@@ -19,3 +19,19 @@
 *{
     outline : none;
 }
+
+.chatBackground{
+    background-image: url("/images/background.jpg");
+    height: 100vh; 
+    width: 100%; 
+    padding-top: 20vh;
+}
+
+.formCont{
+    width: 700px;
+    height : 60vh;
+    background-color: #262626;
+    border-radius: 50px;
+    margin :  auto;
+    padding: 25vh 5vw;
+}

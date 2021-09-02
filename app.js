@@ -3,6 +3,11 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const router = require('./router');
+const chatModel = require("./model")
+const http = require('http');
+const server = http.createServer(app);
+const socketIo = require('socket.io');
+const io = new socketIo.Server(server);
 
 const connection = () => {
     mongoose.connect('mongodb://localhost/whatsappArchive', {
@@ -20,4 +25,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', router);
 
-app.listen('7000');
+io.on('connection', (socket) => {
+    socket.on('getChatData', (chatName) => {
+        chatModel.find({title : chatName}).then((data => {
+            socket.emit('changeWindow', data)
+        }))
+    })
+})
+
+server.listen('7000');

@@ -8,13 +8,10 @@
             <p class="h1">Your Chat</p>
         </div> 
         <div>
-            <button class="btn btn-outline-success btn-lg btn-block" style="color: #262626;">Chat 1</button>
-            <button class="btn btn-outline-success btn-lg btn-block" style="color: #262626;">Chat 2</button>
-            <button class="btn btn-outline-success btn-lg btn-block" style="color: #262626;">Chat 3</button>
-            <button class="btn btn-outline-success btn-lg btn-block" style="color: #262626;">Chat 4</button>
-            <button class="btn btn-outline-success btn-lg btn-block" style="color: #262626;">Chat 5</button>
-            <button class="btn btn-outline-success btn-lg btn-block" style="color: #262626;">Chat 6</button>
-            <button class="btn btn-outline-success btn-lg btn-block" style="color: #262626;">Chat 7</button>
+            <% chats.forEach(title => {%>
+                <button class="btn btn-primary btn-lg btn-block" onclick="emitDataRequest('<%= title %>')"><%= title %></button>
+            <%})%>
+            <button class="btn btn-success btn-lg btn-block" onclick="location.href='/addChat'">Add Chat</button>
         </div>
     </div>
     <div class="col-md-9" style="height: 100vh; background-color : white; margin:0; padding:0;">

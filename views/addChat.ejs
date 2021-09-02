@@ -1,0 +1,11 @@
+<%- include('common/header.ejs') %>
+    <div class="chatBackground">
+        <div class="formCont">
+            <form method="POST" action="/addChat">
+                <input type="text" placeholder="Enter The Chat Title" name="chatTitle" class="form-control">
+                <br>
+                <input type="submit" class="btn btn-success" value="Make Chat">
+            </form>
+        </div>
+    </div>
+<%- include('common/footer.ejs') %>
