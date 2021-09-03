@@ -1,8 +1,8 @@
 <%- include('common/header.ejs') %>
     <div class="chatBackground">
         <div class="formCont">
-            <form method="POST" action="/addChat">
-                <input type="text" placeholder="Enter The Chat Title" name="chatTitle" class="form-control">
+            <form method="POST" action="/addChat" enctype="multipart/form-data">
+                <input type="text" placeholder="Enter The Chat Title" name="chatTitle" class="form-control" required>
                 <br>
                 <input type="submit" class="btn btn-success" value="Make Chat">
             </form>

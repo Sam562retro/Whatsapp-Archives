@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const router = require('./router');
 const chatModel = require("./model")
 const http = require('http');
@@ -21,7 +20,6 @@ connection();
 
 app.use(express.static('assets'))
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', router);
 

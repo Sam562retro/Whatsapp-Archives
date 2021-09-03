@@ -35,3 +35,12 @@
     margin :  auto;
     padding: 25vh 5vw;
 }
+
+.formCont2{
+    width: 700px;
+    height : 60vh;
+    background-color: #262626;
+    border-radius: 50px;
+    margin :  auto;
+    padding: 20vh 5vw;
+}
