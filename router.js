@@ -44,7 +44,7 @@ router.get('/updateChat/:chatTitle', (req, res) => {
     res.render('updateChat', {chatTitle : req.params.chatTitle});
 })
 
-router.post('/updateChat/:chatTitle', upload.single('chatUpdateFile'), (req, res) => {
+router.post('/updateChat/:chatTitle', upload.single('chatUpdateFile'), async (req, res) => {
     let file = req.file
     let data = '';
     let dataArranged = [];
@@ -55,7 +55,7 @@ router.post('/updateChat/:chatTitle', upload.single('chatUpdateFile'), (req, res
     readerStream.on('data', function(chunk) {
        data += chunk
     });
-    readerStream.on('end', function(){
+    await readerStream.on('end', async function(){
         dataSetup1 = data.split('\n');
         dataSetup1.forEach(lines => {
             if(lines.charAt(2) === '/' && lines.charAt(5) === '/' && lines.charAt(10) === ',' && lines.charAt(14) === ':' && lines.charAt(18) === '-'){
@@ -74,7 +74,13 @@ router.post('/updateChat/:chatTitle', upload.single('chatUpdateFile'), (req, res
                 dataSetup2[dataSetup2.length-1].message = fullMessage;
             }
         })
-        chatModel.findOneAndUpdate({title : req.params.chatTitle}, {content : dataSetup2, lastUploadDate : Date.parse(`${dataSetup2[dataSetup2.length-1].date} ${dataSetup2[dataSetup2.length-1].time}:00 GMT+0530 (India Standard Time)`)}, { new: true }).catch(err => {console.log(err)});
+        await chatModel.findOneAndUpdate({title : req.params.chatTitle}, {content : dataSetup2, lastUploadDate : Date.parse(`${dataSetup2[dataSetup2.length-1].date} ${dataSetup2[dataSetup2.length-1].time}:00 GMT+0530 (India Standard Time)`)}, { new: true }).catch(err => {console.log(err)});
+        fs.unlink(`./uploads/${file.filename}`, (err) => {
+            if (err) {
+              console.error(err)
+              return
+            }
+        })
     })
     readerStream.on('error', function(err) {
         console.log(err.stack);
